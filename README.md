@@ -20,7 +20,7 @@ See the [Hardware Component](doc/building_a_custom_pico_hardware_plugin.md) Tuto
 
 ## Measurement Orchestration
 
-See the [Data-log Measurement Tutorial](doc/pico_datalog.md)
+See the [Data-log Measurement Tutorial](doc/pico_datalog_measurement_tutorial.md)
 
 ## Ploting data from HDF5 data-files
 
