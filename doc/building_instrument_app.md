@@ -25,7 +25,7 @@ Open an Anaconda prompt and run the following commands:
 ```
 > conda create -n scopefoundry python=3.11
 > conda activate scopefoundry
-(scopefoundry) > conda install numpy pyqt qtpy h5py pyqtgraph
+(scopefoundry) > conda install numpy pyqt qtpy h5py pyqtgraph pyserial matplotlib qtconsole
 (scopefoundry) > pip install ScopeFoundry
 ```
 The first two lines create and activate a clean python / conda environment for your ScopeFoundry app to use, the next lines install the required packages and the final line install the ScopeFoundry package itself.    
