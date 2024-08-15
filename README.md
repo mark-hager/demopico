@@ -6,22 +6,22 @@ This ScopeFoundry demo  is a simple example of a ScopeFoundry App controlling a 
 
 ## Hardware
 
-See the [Demo HW tutorial](doc/demo_pico_hw) on getting the hardware setup set up. If you don't have the parts, this tutorial will allow you to simulate this device.
+See the [Demo HW tutorial](doc/demo_pico_hw.md) on getting the hardware setup set up. If you don't have the parts, this tutorial will allow you to simulate this device.
 
 ![Demo Hardware Photo](doc/pico_pr_connection_diagram.png)
 
 ## ScopeFoundry App
 
-See the [Scope Foundry Instrument App Tutorial](doc/building_instrument_app) to build the initial App
+See the [Scope Foundry Instrument App Tutorial](doc/building_instrument_app.md) to build the initial App
 
 ## Hardware Control
 
-See the [Hardware Component](doc/building_a_custom_pico_hardware_plugin) Tutorial
+See the [Hardware Component](doc/building_a_custom_pico_hardware_plugin.md) Tutorial
 
 ## Measurement Orchestration
 
-See the [Data-log Measurement Tutorial](doc/pico_datalog)
+See the [Data-log Measurement Tutorial](doc/pico_datalog.md)
 
 ## Ploting data from HDF5 data-files
 
-See the [Ploting H5 Tutorial](doc/plotting_datalog)
+See the [Ploting H5 Tutorial](doc/plotting_datalog.md)
