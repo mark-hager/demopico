@@ -14,7 +14,7 @@ This ScopeFoundry demo hardware is a simple example of a microcontroller that il
 
 Note: We recommend the [Anaconda][anaconda_dl] Python distribution, which contains many easy-to-install scientific python packages.
 
-* Download and Install [Anaconda][anaconda_dl]. The recommended Python version is 3.12, other Python 3 versions should work, but are not actively tested. If you already had a non-Anaconda version of python installed, you will need to make sure you use Anaconda if you would like to follow the instructions below.
+* Download and Install [Anaconda][anaconda_dl]. The recommended Python version is 3.11, other Python 3 versions should work, but are not actively tested. If you already had a non-Anaconda version of python installed, you will need to make sure you use Anaconda if you would like to follow the instructions below.
 
 * Anaconda provides a way to make a clean set of packages in an "environment". Follow these steps to create an [conda environment](http://conda.pydata.org/docs/using/envs.html). This environment includes ScopeFoundry and all of the packages ScopeFoundry needs to run. 
 
@@ -23,7 +23,7 @@ __Windows__
 Open an Anaconda prompt and run the following commands:
     
 ```
-> conda create -n scopefoundry python=3.12
+> conda create -n scopefoundry python=3.11
 > conda activate scopefoundry
 (scopefoundry) > conda install numpy pyqt qtpy h5py pyqtgraph
 (scopefoundry) > pip install ScopeFoundry
@@ -37,7 +37,7 @@ __Mac / Linux__
 Open a terminal and run the following commands:
 
 ```
-$ conda create -n scopefoundry python=3.12
+$ conda create -n scopefoundry python=3.11
 $ conda activate scopefoundry
 (scopefoundry) $ conda install numpy pyqt qtpy h5py pyqtgraph
 (scopefoundry) $ pip install ScopeFoundry
