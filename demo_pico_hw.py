@@ -186,4 +186,4 @@ def str2bool(x):
     Returns True if the string is one of ['true', '1', 't', 'y', 'yes'] (case-insensitive),
     otherwise returns False.
     """
-    return x.lower() in ['true', '1', 't', 'y', 'yes']
+    return x.strip().lower() in ['true', '1', 't', 'y', 'yes']
