@@ -6,7 +6,7 @@ This ScopeFoundry demo  is a simple example of a ScopeFoundry App controlling a 
 
 ## Hardware
 
-See the [Demo HW tutorial](demo_pico_hw) on getting the hardware setup set up. If you don't have the parts, this tutorial will allow you to simulate this device.
+See the [Demo HW tutorial](doc/demo_pico_hw) on getting the hardware setup set up. If you don't have the parts, this tutorial will allow you to simulate this device.
 
 ![Demo Hardware Photo](doc/pico_pr_connection_diagram.png)
 
