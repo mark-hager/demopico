@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>794</width>
+    <height>623</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,1">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="datalog_params_groupBox">
+     <property name="title">
+      <string>Data Log Parameters</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="2">
+       <widget class="QDoubleSpinBox" name="log_duration_doubleSpinBox"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="start_pushButton">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QDoubleSpinBox" name="log_interval_doubleSpinBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="interrupt_pushButton">
+        <property name="text">
+         <string>Interrupt</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Log Duration</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Log Interval</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QProgressBar" name="progressBar">
+        <property name="value">
+         <number>24</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="picohw_groupBox">
+     <property name="title">
+      <string>Demo Pico HW Settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="pico_connect_checkBox">
+        <property name="text">
+         <string>Connect to HW</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QCheckBox" name="led_blink_on_checkBox">
+        <property name="text">
+         <string>LED Blink</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QCheckBox" name="sim_checkBox">
+        <property name="text">
+         <string>Simulated Device</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Blink Frequency</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QDoubleSpinBox" name="led_blink_freq_doubleSpinBox"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Blink Duty Cycle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QDoubleSpinBox" name="led_blink_duty_doubleSpinBox"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Photoresistor value</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="3">
+       <widget class="QDoubleSpinBox" name="pr_value_doubleSpinBox">
+        <property name="font">
+         <font>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="plot_groupBox">
+     <property name="title">
+      <string>Data Log Plot</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3"/>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
