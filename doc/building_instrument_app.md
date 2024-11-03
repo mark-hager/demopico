@@ -47,15 +47,15 @@ The first two lines create and activate a clean python / conda environment for y
 
 ## Step 2: Create your Microscope App
 
-Copy the following template code for an empty microscope app into a new python file called __pico_demo_app.py__
+Copy the following template code for an empty microscope app into a new python file called __demo_pico_app.py__
 ```python
 from ScopeFoundry import BaseMicroscopeApp
 
-class PicoDemoMicroscopeApp(BaseMicroscopeApp):
+class DemoPicoApp(BaseMicroscopeApp):
 
     # this is the name of the microscope that ScopeFoundry uses 
     # when storing data
-    name = 'pico_demo_app'
+    name = 'demo_pico_app'
     
     # You must define a setup function that adds all the 
     # capablities of the microscope and sets default settings
@@ -82,7 +82,7 @@ class PicoDemoMicroscopeApp(BaseMicroscopeApp):
 
 if __name__ == '__main__':
     # Create an instance of your App
-    app = PicoDemoMicroscopeApp() 
+    app = DemoPicoApp() 
     # Run the App
     app.exec_()
 ```
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
 Let's test our empty microscope app:
 
-in your terminal window enter: `python pico_demo_app.py` and you will be greeted something like this:
+in your terminal window enter: `python demo_pico_app.py` and you will be greeted something like this:
 
 ![Image of empty microscope](empty_microscope.png)
 
@@ -123,9 +123,11 @@ class DemoPicoApp(BaseMicroscopeApp):
     name = 'demo_pico_app'
 
     def setup(self):
-
+        ...
+        # Add Hardware components
         from demo_pico_hw import DemoPicoHW
         self.add_hardware(DemoPicoHW(app=self))
+        ...
 ```
 
 We need two lines in the setup function to use this hardware component. The first line tells python where to find the hardware component, via an `import` statement. The next line creates an instance of the hardware (an active copy in memory), and then adds it to your App.
@@ -139,7 +141,7 @@ The `demo_pico_datalog_measure.py` file provides a way to capture the data, disp
 ```python
     def setup(self):
         ...
-        #Add Measurement components
+        # Add Measurement components
         from demo_pico_datalog_measure import DemoPicoDataLogMeasurement
         self.add_measurement(DemoPicoDataLogMeasurement(app=self))
         ...
