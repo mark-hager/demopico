@@ -1,10 +1,8 @@
 ### Demo Pico Hardware / Firmware documentation
 
-This ScopeFoundry demo hardware is a simple example of a microcontroller that illustrates how you can use serial communication to set output parameters and read in real world analog signals, all for $6.
+This ScopeFoundry demo hardware is a simple example of a microcontroller that illustrates how you can use serial communication to set output parameters and read in real world analog signals, all for $6. If you don't have the parts you may also simulate this device by skipping to [Simulating the Hardware](#simulating-the-hardware)
 
-![Demo Hardware photo](pico_pr_connection_photo.jpeg)
-
-
+![Demo Hardware Photo](demo_pico_parts.jpeg)
 #### Hardware Overview
 
 
@@ -102,27 +100,28 @@ The communication protocol supports the following commands:
 This communication protocol enables simple control and monitoring of the Raspberry Pi Pico W's built-in LED and an external photoresistor through a set of predefined serial commands. It allows for querying and modifying settings such as the LED blinking status, frequency, duty cycle, and reading the analog value from the photoresistor.
 
 ### Hardware setup
-
+The following instructions presume you have purchased a Raspberry Pi Pico 
 The Raspberry Pi Pico W pinout diagram:
 
 ![Pico W Pinout](picow-pinout.svg)
 
 
-In order to read out the photoresistor's analog signal we need to attach it appropriately to the Pico. The fully correct way to do this can be found in many [tutorials](https://www.instructables.com/How-to-use-a-photoresistor-or-photocell-Arduino-Tu/). 
+In order to read out the photoresistor's analog signal we need to connect it to the Pico. The fully correct way to do this requires an extra couple of resistors and can be found in many [tutorials](https://www.instructables.com/How-to-use-a-photoresistor-or-photocell-Arduino-Tu/). 
 
 ![Pico Photoresistor Connection Diagram](pico_pr_connection_diagram_pullup.png)
 
 #### The Lazy Way
 
-We are going to be lazy and do this with no extra components and no soldering! We will be abusing the internal pullup resistor on GPIO26 and relying on mechanical connections. This is not a good practice for anything reliable, but will get us started on using this to build our first ScopeFoundry instrument.
+But we are going to be lazy and do this with no extra components and no soldering! We will be abusing the internal pullup resistor on GPIO26 and connecting our photoresistor directly onto the board. This is not a good practice for anything reliable, but will get us started on using this to build our first ScopeFoundry instrument.
 
 Here is the wiring diagram:
 
 ![wiring diagram](pico_pr_connection_diagram.png)
 
-Photo of the photoresistor connections:
+Connect one pin of the photoresistor to ground and bend the other to have it loop through both GP26 and GP27. As mentioned, we will configure GP26 as an internal pullup resistor while GP27 will be used to read the analog signal of the photoresistor.
 
-![alt text](pico_pr_connection_photo.jpeg)
+
+![Photo of the photoresistor connections](pico_pr_connection_photo.jpeg)
 
 ### Firmware setup
 
@@ -163,7 +162,7 @@ led_blink_freq = 1 #Hz
 led_blink_duty = 50 # percent
 
 pullup_pin = digitalio.DigitalInOut(board.GP26)
-pullup_pin.pull = digitalio.Pull.UP
+pullup_pin.pull = digitalio.Pull.UP # setting the internal pullup resistor
 
 pr = analogio.AnalogIn(board.GP27)
 
@@ -245,3 +244,7 @@ while True:
             print(outstr)
             usb_cdc.data.write(outstr.encode())
 ```
+### Simulating the hardware
+**TODO**
+
+Next, proceed to the instructions for [building the instrument app](building_instrument_app).

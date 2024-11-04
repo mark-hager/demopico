@@ -2,7 +2,7 @@
  
 ## Step 0: Instrument Hardware
 
-This ScopeFoundry demo hardware is a simple example of a microcontroller that illustrates how you can use serial communication to set output parameters and read in real world analog signals, all for $6. See the [Demo HW tutorial](demo_pico_hw) on getting this set up. If you don't have the parts, this tutorial will allow you to simulate this device.
+This ScopeFoundry demo hardware is a simple example of a microcontroller that illustrates how you can use serial communication to set output parameters and read in real world analog signals, all for $6. See the [Demo HW tutorial](demo_pico_hw.md) on getting this set up. Note that the Demo HW tutorial will also allow you to simulate the hardware components if you don't yet have the parts.
 
 ![Instrument HW](pico_pr_connection_diagram_pullup.png)
 
@@ -12,9 +12,9 @@ This ScopeFoundry demo hardware is a simple example of a microcontroller that il
 
 [anaconda_dl]: https://www.anaconda.com/download/success
 
-Note: We recommend the [Anaconda][anaconda_dl] Python distribution, which contains many easy-to-install scientific python packages.
+Note: We recommend the [Anaconda][anaconda_dl] Python distribution, which contains many easy-to-install scientific python packages. If you already had a non-Anaconda version of python installed, you will need to make sure you use Anaconda in order to follow the instructions below.
 
-* Download and Install [Anaconda][anaconda_dl]. The recommended Python version is 3.11, other Python 3 versions should work, but are not actively tested. If you already had a non-Anaconda version of python installed, you will need to make sure you use Anaconda if you would like to follow the instructions below.
+* Download and Install [Anaconda][anaconda_dl]. The current recommended Python version is 3.12. Other Python 3 versions should work but are not actively tested. 
 
 * Anaconda provides a way to make a clean set of packages in an "environment". Follow these steps to create an [conda environment](http://conda.pydata.org/docs/using/envs.html). This environment includes ScopeFoundry and all of the packages ScopeFoundry needs to run. 
 
@@ -23,7 +23,7 @@ __Windows__
 Open an Anaconda prompt and run the following commands:
     
 ```
-> conda create -n scopefoundry python=3.11
+> conda create -n scopefoundry python=3.12
 > conda activate scopefoundry
 (scopefoundry) > conda install numpy pyqt qtpy h5py pyqtgraph pyserial matplotlib qtconsole
 (scopefoundry) > pip install ScopeFoundry
@@ -37,7 +37,7 @@ __Mac / Linux__
 Open a terminal and run the following commands:
 
 ```
-$ conda create -n scopefoundry python=3.11
+$ conda create -n scopefoundry python=3.12
 $ conda activate scopefoundry
 (scopefoundry) $ conda install numpy pyqt qtpy h5py pyqtgraph
 (scopefoundry) $ pip install ScopeFoundry
@@ -47,27 +47,27 @@ The first two lines create and activate a clean python / conda environment for y
 
 ## Step 2: Create your Microscope App
 
-### picodemo_app.py
+Copy the following template code for an empty microscope app into a new python file called __demo_pico_app.py__
 ```python
 from ScopeFoundry import BaseMicroscopeApp
 
-class PicoDemoMicroscopeApp(BaseMicroscopeApp):
+class DemoPicoApp(BaseMicroscopeApp):
 
     # this is the name of the microscope that ScopeFoundry uses 
     # when storing data
-    name = 'pico_demo_app'
+    name = 'demo_pico_app'
     
     # You must define a setup function that adds all the 
-    #capablities of the microscope and sets default settings
+    # capablities of the microscope and sets default settings
     def setup(self):
         
-        #Add App wide settings
+        # Add App wide settings
         # TODO
         
-        #Add hardware components
+        # Add hardware components
         print("Adding Hardware Components")
 
-        #Add measurement components
+        # Add measurement components
         print("Create Measurement objects")
 
         # Connect to custom gui
@@ -82,7 +82,7 @@ class PicoDemoMicroscopeApp(BaseMicroscopeApp):
 
 if __name__ == '__main__':
     # Create an instance of your App
-    app = PicoDemoMicroscopeApp() 
+    app = DemoPicoApp() 
     # Run the App
     app.exec_()
 ```
@@ -90,9 +90,9 @@ if __name__ == '__main__':
 
 Let's test our empty microscope app:
 
-in your terminal window: `python pico_demo_app.py` and you will be greeted something like this:
+in your terminal window enter: `python demo_pico_app.py` and you will be greeted something like this:
 
-![Image of empty microscope](../empty_microscope.png)
+![Image of empty microscope](empty_microscope.png)
 
 There are 3 main parts to the user interface. A list of Hardware components, a list of Measurments, and a Tabbed area for Measurement user interfaces: 
 
@@ -123,9 +123,11 @@ class DemoPicoApp(BaseMicroscopeApp):
     name = 'demo_pico_app'
 
     def setup(self):
-
+        ...
+        # Add Hardware components
         from demo_pico_hw import DemoPicoHW
         self.add_hardware(DemoPicoHW(app=self))
+        ...
 ```
 
 We need two lines in the setup function to use this hardware component. The first line tells python where to find the hardware component, via an `import` statement. The next line creates an instance of the hardware (an active copy in memory), and then adds it to your App.
@@ -139,7 +141,7 @@ The `demo_pico_datalog_measure.py` file provides a way to capture the data, disp
 ```python
     def setup(self):
         ...
-        #Add Measurement components
+        # Add Measurement components
         from demo_pico_datalog_measure import DemoPicoDataLogMeasurement
         self.add_measurement(DemoPicoDataLogMeasurement(app=self))
         ...
