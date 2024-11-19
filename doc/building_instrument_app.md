@@ -96,7 +96,7 @@ in your terminal window enter: `python demo_pico_app.py` and you will be greeted
 
 There are 3 main parts to the user interface. A list of Hardware components, a list of Measurments, and a Tabbed area for Measurement user interfaces: 
 
-![alt text](../key_concepts/Slide07.png)
+![Screenshot showing user interface](Slide07.png)
 
 An ideal microscope directory has the following structure:
 

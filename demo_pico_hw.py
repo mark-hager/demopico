@@ -57,7 +57,7 @@ class DemoPicoHW(HardwareComponent):
             read_func = self.read_led_blink_duty,
             write_func = self.write_led_blink_duty,
         )
-        
+
         self.settings.pr.connect_to_hardware(
             read_func = self.read_pr,
         )
@@ -80,7 +80,7 @@ class DemoPicoHW(HardwareComponent):
         if hasattr(self, 'ser'):
             self.ser.close()
             del self.ser
-        
+
 
     def ser_ask(self, cmd):
         """
@@ -122,7 +122,7 @@ class DemoPicoHW(HardwareComponent):
         cmd, val = resp.split("=")
         assert cmd == "led_blink_duty"
         return int(val)
-    
+
     def read_pr(self):
         "Will reply like this: `pr.value=28323`"
         if self.settings['sim']:
@@ -131,7 +131,7 @@ class DemoPicoHW(HardwareComponent):
         cmd, val = resp.split("=")
         assert cmd == "pr.value"
         return int(val)
-    
+
     ### Write
     def write_led_blink_on(self, x):
         if self.settings['sim']:
@@ -146,13 +146,13 @@ class DemoPicoHW(HardwareComponent):
     def write_led_blink_freq(self, x):
         if self.settings['sim']:
             self._sim_led_blink_freq = float(x)
-            return        
+            return
         x = float(x)
         resp = self.ser_ask(f"led_blink_freq={x}")
         cmd, val = resp.split("=")
         assert cmd == "led_blink_freq"
-        assert float(val) == x
-    
+        assert math.isclose(float(val), x)
+
     def write_led_blink_duty(self, x):
         if self.settings['sim']:
             self._sim_led_blink_duty = int(x)
@@ -176,7 +176,7 @@ class DemoPicoHW(HardwareComponent):
                 add_led_light = 0
         else:
             add_led_light = 0
-        
+
         pr_value = random.randint(0,10) + 1000+int(100*math.sin(now/100.)) + 50*add_led_light
         return pr_value
 

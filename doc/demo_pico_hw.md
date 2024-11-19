@@ -9,7 +9,7 @@ This ScopeFoundry demo hardware is a simple example of a microcontroller that il
 - **Microcontroller**: Raspberry Pi Pico W running CircuitPython 9.1.
 - **LED**: Built-in LED connected to GPIO pin 25.
 - **Photoresistor**: GL5516 Photoresistor connected between GPIO26 & GPIO27 and GND (Pin28).
-- **Serial Communication**: Communicates via USB using the `usb_cdc` module. This appears as a virtual COM port (VCP) on the host computer.
+- **Serial Communication**: Communicates via USB using the [`usb_cdc`](https://docs.circuitpython.org/en/latest/shared-bindings/usb_cdc/) module. This appears as a virtual COM port (VCP) on the host computer.
 
 ### Communication Protocol
 
@@ -126,9 +126,7 @@ Connect one pin of the photoresistor to ground and bend the other to have it loo
 ### Firmware setup
 
  - Install CircuitPython on the Raspberry Pi Pico W by copying [adafruit-circuitpython-raspberry_pi_pico-en_US-9.1.1.uf2](https://circuitpython.org/board/raspberry_pi_pico_w/) file to the `RPI-RP2` USB drive. For details follow instructions from [AdaFruit](https://learn.adafruit.com/getting-started-with-raspberry-pi-pico-circuitpython/circuitpython).
-
- - Copy firmware to the new CIRCUITPY USB drive that appears. Firmware consists of two files: 1) `boot.py` and 2) `code.py`
-
+dmesg
 #### boot.py 
 
 Sets up data serial port channel needed for ScopeFoundry communication:
@@ -139,7 +137,7 @@ usb_cdc.enable(console=True, data=True)  # Enable console and data
 ```
 
 #### code.py
-This file contains the code to handle communication to ScopeFoundry over serial port and runs the LED and reads the analog read from the photoresistor.
+This file contains the code to handle communication to ScopeFoundry over serial port and runs the LED and reads the analog signal from the photoresistor.
 
 ```python
 import board
@@ -246,5 +244,8 @@ while True:
 ```
 ### Simulating the hardware
 **TODO**
+
+Next we will want to write the code for our demo hardware component for ScopeFoundry. Following the instructions for [building a custom pico hardware plugin](building_a_custom_pico_hardware_plugin.md)
+
 
 Next, proceed to the instructions for [building the instrument app](building_instrument_app).
